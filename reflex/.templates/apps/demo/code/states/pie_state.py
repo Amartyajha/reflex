@@ -9,10 +9,10 @@ class PieChartState(State):
     """Pie Chart State."""
 
     resources: list[dict[str, Any]] = [
-        dict(type_="🏆", count=1),
-        dict(type_="🪵", count=1),
-        dict(type_="🥑", count=1),
-        dict(type_="🧱", count=1),
+        {type_="🏆", count=1}
+        {type_="🪵", count=1}
+        {type_="🥑", count=1}
+        {type_="🧱", count=1}
     ]
 
     @rx.cached_var

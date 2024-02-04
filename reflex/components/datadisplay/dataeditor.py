@@ -247,8 +247,8 @@ class DataEditor(NoSSRComponent):
             "on_item_hovered": lambda pos: [pos],
             "on_delete": lambda selection: [selection],
             "on_finished_editing": lambda new_value, movement: [new_value, movement],
-            "on_row_appended": lambda: [],
-            "on_selection_cleared": lambda: [],
+            "on_row_appended": list,
+            "on_selection_cleared": list,
             "on_column_resize": lambda col, width: [col, width],
         }
 
@@ -311,10 +311,9 @@ class DataEditor(NoSSRComponent):
                 raise ValueError(
                     "Cannot pass in both a pandas dataframe and columns to the data_editor component."
                 )
-            else:
-                props["columns"] = [
-                    format.format_data_editor_column(col) for col in columns
-                ]
+            props["columns"] = [
+                format.format_data_editor_column(col) for col in columns
+            ]
 
         if "theme" in props:
             theme = props.get("theme")

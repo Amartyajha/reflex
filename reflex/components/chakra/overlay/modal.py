@@ -63,10 +63,10 @@ class Modal(ChakraComponent):
         """
         return {
             **super().get_event_triggers(),
-            "on_close": lambda: [],
-            "on_close_complete": lambda: [],
-            "on_esc": lambda: [],
-            "on_overlay_click": lambda: [],
+            "on_close": list,
+            "on_close_complete": list,
+            "on_esc": list,
+            "on_overlay_click": list,
         }
 
     @classmethod

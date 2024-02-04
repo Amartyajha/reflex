@@ -82,7 +82,7 @@ class Model(Base, sqlmodel.SQLModel):
         """
         if hasattr(value, "dict"):
             return value.dict()
-        elif isinstance(value, list):
+        if isinstance(value, list):
             return [cls._dict_recursive(item) for item in value]
         return value
 

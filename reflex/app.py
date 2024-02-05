@@ -603,6 +603,11 @@ class App(Base):
 
     def _app_root(self, app_wrappers: dict[tuple[int, str], Component]) -> Component:
         for component in tuple(app_wrappers.values()):
+        """
+        Generate the docstring for the given function in the following format:
+        
+        """
+        
             app_wrappers.update(component.get_app_wrap_components())
         order = sorted(app_wrappers, key=lambda k: k[0], reverse=True)
         root = parent = copy.deepcopy(app_wrappers[order[0]])

@@ -32,8 +32,7 @@ class Html(Box):
         # If children are not provided, throw an error.
         if len(children) != 1:
             raise ValueError("Must provide children to the html component.")
-        else:
-            props["dangerouslySetInnerHTML"] = {"__html": children[0]}
+        props["dangerouslySetInnerHTML"] = {"__html": children[0]}
 
         # Create the component.
         return super().create(**props)

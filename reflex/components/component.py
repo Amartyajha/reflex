@@ -1357,6 +1357,34 @@ class NoSSRComponent(Component):
         )
 
     def _get_dynamic_imports(self) -> str:
+        """
+        This function returns a string that represents a dynamic import statement in JavaScript.
+        
+        Parameters:
+        - self (object): The instance of the class calling the function.
+            - library (str): The name of the library to import.
+            - alias (str, optional): The alias to use for the imported component. If not provided, the tag will be used.
+            - tag (str): The name of the component to import.
+            - is_default (bool): Indicates whether the component is a default export or not.
+        
+        Returns:
+        - str: The dynamic import statement as a string.
+        
+        Processing Logic:
+        - Define the default options fragment for the import statement as ", { ssr: false });"
+        - Check if the library parameter is None, and throw a ValueError if it is.
+        - Split the library name into parts by the "@" character and remove any empty parts.
+        - Set the import_name variable to the first non-empty part if it exists, or the library name itself if it doesn't exist.
+        - Create the library_import variable as a string that starts with "const" followed by either the alias or the tag, as specified, and sets it equal to a dynamic import statement using the import_name variable.
+        - Create the mod_import variable as a string that contains a .then() function to handle named exports if the component is not a default export, or an empty string if it is a default export.
+        - Join the strings together to return the final dynamic import statement.
+        
+        Examples:
+        - Example usage of the function:
+            instance._get_dynamic_imports()
+            Output: "const MyComponent = dynamic(() => import('my-library').then((mod) => mod.MyComponent), { ssr: false });"
+        """
+        
         opts_fragment = ", { ssr: false });"
 
         # extract the correct import name from library name

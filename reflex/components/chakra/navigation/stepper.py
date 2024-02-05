@@ -43,15 +43,7 @@ class Stepper(ChakraComponent):
             The stepper component.
         """
         if len(children) == 0:
-            children = []
-            for indicator, layout, separator in items or []:
-                children.append(
-                    Step.create(
-                        StepIndicator.create(indicator),
-                        layout,
-                        StepSeparator.create(separator),
-                    )
-                )
+            children = [Step.create(StepIndicator.create(indicator), layout, StepSeparator.create(separator)) for (indicator, layout, separator) in items or []]
         return super().create(*children, **props)
 
 

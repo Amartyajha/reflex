@@ -3,10 +3,7 @@ from typing import Literal
 
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, RadixThemesComponent
 
 LiteralSeperatorSize = Literal["1", "2", "3", "4"]
 

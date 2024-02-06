@@ -7,15 +7,8 @@ from __future__ import annotations
 from reflex import el
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    LiteralVariant,
-    RadixThemesComponent,
-)
-from .base import (
-    LiteralTextSize,
-    LiteralTextWeight,
-)
+from ..base import LiteralAccentColor, LiteralVariant, RadixThemesComponent
+from .base import LiteralTextSize, LiteralTextWeight
 
 
 class Code(el.Code, RadixThemesComponent):

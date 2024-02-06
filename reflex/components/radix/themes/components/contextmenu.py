@@ -4,10 +4,7 @@ from typing import Any, Dict, Literal
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, RadixThemesComponent
 
 
 class ContextMenuRoot(RadixThemesComponent):

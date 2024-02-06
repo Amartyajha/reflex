@@ -6,9 +6,7 @@ from reflex.constants import EventTriggers
 from reflex.utils import format
 from reflex.vars import Var
 
-from ..base import (
-    RadixThemesComponent,
-)
+from ..base import RadixThemesComponent
 
 LiteralSideType = Literal[
     "top",

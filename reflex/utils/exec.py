@@ -227,7 +227,8 @@ def run_backend_prod(
         command,
         run=True,
         show_logs=True,
-        env={constants.SKIP_COMPILE_ENV_VAR: "yes"},  # skip compile for prod backend
+        # skip compile for prod backend
+        env={constants.SKIP_COMPILE_ENV_VAR: "yes"},
     )
 
 
@@ -280,8 +281,10 @@ def output_system_info():
         console.debug(f"{dep}")
 
     console.debug(
-        f"Using package installer at: {prerequisites.get_install_package_manager()}"  # type: ignore
+        # type: ignore
+        f"Using package installer at: {prerequisites.get_install_package_manager()}"
     )
-    console.debug(f"Using package executer at: {prerequisites.get_package_manager()}")  # type: ignore
+    # type: ignore
+    console.debug(f"Using package executer at: {prerequisites.get_package_manager()}")
     if system != "Windows":
         console.debug(f"Unzip path: {path_ops.which('unzip')}")

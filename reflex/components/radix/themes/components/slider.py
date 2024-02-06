@@ -4,11 +4,7 @@ from typing import Any, Dict, List, Literal, Union
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    LiteralRadius,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, LiteralRadius, RadixThemesComponent
 
 
 class Slider(RadixThemesComponent):

@@ -148,7 +148,6 @@ class ChakraColorModeProvider(Component):
 
 chakra_color_mode_provider = ChakraColorModeProvider.create()
 
-
 LiteralColorScheme = Literal[
     "none",
     "gray",
@@ -171,11 +170,9 @@ LiteralColorScheme = Literal[
     "telegram",
 ]
 
-
 LiteralVariant = Literal["solid", "subtle", "outline"]
 LiteralDividerVariant = Literal["solid", "dashed"]
 LiteralTheme = Literal["light", "dark"]
-
 
 LiteralTagColorScheme = Literal[
     "gray",

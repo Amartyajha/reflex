@@ -205,7 +205,8 @@ def serialize_dict(prop: Dict[str, Any]) -> str:
     for key, value in prop.items():
         if types._issubclass(type(value), Callable):
             raise exceptions.InvalidStylePropError(
-                f"The style prop `{format.to_snake_case(key)}` cannot have "  # type: ignore
+                # type: ignore
+                f"The style prop `{format.to_snake_case(key)}` cannot have "
                 f"`{value.fn.__qualname__ if isinstance(value, EventHandler) else value.__qualname__ if isinstance(value, builtin_types.FunctionType) else value}`, "
                 f"an event handler or callable as its value"
             )
@@ -297,7 +298,6 @@ try:
 
 except ImportError:
     pass
-
 
 try:
     import base64

@@ -62,7 +62,10 @@ class ImportVar(Base):
             The name(tag name with alias) of tag.
         """
         if self.alias:
-            return self.alias if self.is_default else " as ".join([self.tag, self.alias])  # type: ignore
+            # type: ignore
+            return (
+                self.alias if self.is_default else " as ".join([self.tag, self.alias])
+            )
         else:
             return self.tag or ""
 

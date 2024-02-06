@@ -7,11 +7,7 @@ from pandas import DataFrame
 
 from reflex.base import Base
 from reflex.state import BaseState
-from reflex.vars import (
-    BaseVar,
-    ComputedVar,
-    Var,
-)
+from reflex.vars import BaseVar, ComputedVar, Var
 
 test_vars = [
     BaseVar(_var_name="prop1", _var_type=int),

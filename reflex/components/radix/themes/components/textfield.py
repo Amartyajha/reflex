@@ -9,12 +9,7 @@ from reflex.components.radix.themes.components.icons import Icon
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    LiteralRadius,
-    LiteralSize,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, LiteralRadius, LiteralSize, RadixThemesComponent
 
 LiteralTextFieldSize = Literal["1", "2", "3"]
 LiteralTextFieldVariant = Literal["classic", "surface", "soft"]

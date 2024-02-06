@@ -2,9 +2,7 @@
 import re
 from typing import Dict, Literal, Optional, Union
 
-from reflex.components.chakra import (
-    ChakraComponent,
-)
+from reflex.components.chakra import ChakraComponent
 from reflex.components.chakra.forms import Button, color_mode_cond
 from reflex.components.chakra.layout import Box
 from reflex.components.chakra.media import Icon
@@ -62,7 +60,6 @@ LiteralCodeBlockTheme = Literal[
     "xonokai",
     "z-touch",
 ]
-
 
 LiteralCodeLanguage = Literal[
     "abap",

@@ -4,9 +4,7 @@ from typing import Literal, Union
 from reflex import el
 from reflex.vars import Var
 
-from ..base import (
-    RadixThemesComponent,
-)
+from ..base import RadixThemesComponent
 
 
 class TableRoot(el.Table, RadixThemesComponent):

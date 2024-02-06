@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import contextlib
 import types
+from typing import _GenericAlias  # type: ignore
 from typing import (
     Any,
     Callable,
@@ -12,7 +13,6 @@ from typing import (
     Optional,
     Type,
     Union,
-    _GenericAlias,  # type: ignore
     get_args,
     get_origin,
     get_type_hints,

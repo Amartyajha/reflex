@@ -23,7 +23,6 @@ data_1_show = """[
     {"name": "Page G", "uv": 3490, "pv": 4300, "amt": 2100},
 ]"""
 
-
 graph_1_code = """rx.recharts.composed_chart(
     rx.recharts.area(
         data_key="uv", stroke="#8884d8", fill="#8884d8"
@@ -40,7 +39,6 @@ graph_1_code = """rx.recharts.composed_chart(
     rx.recharts.graphing_tooltip(),
     data=data,
 )"""
-
 
 graph_2_code = """rx.recharts.pie_chart(
     rx.recharts.pie(

@@ -269,7 +269,8 @@ def format_cond(
                 _var_is_string=type(false_value) is str,
             )
         prop2 = false_value._replace(_var_is_local=True)
-        prop1, prop2 = str(prop1), str(prop2)  # avoid f-string semantics for Var
+        # avoid f-string semantics for Var
+        prop1, prop2 = str(prop1), str(prop2)
         return f"{cond} ? {prop1} : {prop2}".replace("{", "").replace("}", "")
 
     # Format component conds.

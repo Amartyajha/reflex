@@ -41,7 +41,6 @@ CI = bool(os.environ.get("CI", False))
 LOCK_EXPIRATION = 2000 if CI else 100
 LOCK_EXPIRE_SLEEP = 2.5 if CI else 0.2
 
-
 formatted_router = {
     "session": {"client_token": "", "client_ip": "", "session_id": ""},
     "headers": {

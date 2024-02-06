@@ -65,7 +65,8 @@ T = TypeVar("T")
 TimeoutType = Optional[Union[int, float]]
 
 if platform.system == "Windows":
-    FRONTEND_POPEN_ARGS["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP  # type: ignore
+    # type: ignore
+    FRONTEND_POPEN_ARGS["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP
 else:
     FRONTEND_POPEN_ARGS["start_new_session"] = True
 
@@ -195,7 +196,8 @@ class AppHarness:
         return textwrap.dedent(source)
 
     def _initialize_app(self):
-        os.environ["TELEMETRY_ENABLED"] = ""  # disable telemetry reporting for tests
+        # disable telemetry reporting for tests
+        os.environ["TELEMETRY_ENABLED"] = ""
         self.app_path.mkdir(parents=True, exist_ok=True)
         if self.app_source is not None:
             app_globals = self._get_globals_from_signature(self.app_source)
@@ -284,7 +286,8 @@ class AppHarness:
     def _wait_frontend(self):
         while self.frontend_url is None:
             line = (
-                self.frontend_process.stdout.readline()  # pyright: ignore [reportOptionalMemberAccess]
+                # pyright: ignore [reportOptionalMemberAccess]
+                self.frontend_process.stdout.readline()
             )
             if not line:
                 break
@@ -299,7 +302,8 @@ class AppHarness:
         def consume_frontend_output():
             while True:
                 line = (
-                    self.frontend_process.stdout.readline()  # pyright: ignore [reportOptionalMemberAccess]
+                    # pyright: ignore [reportOptionalMemberAccess]
+                    self.frontend_process.stdout.readline()
                 )
                 if not line:
                     break

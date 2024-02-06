@@ -6,9 +6,7 @@ from __future__ import annotations
 
 from reflex import el
 
-from ..base import (
-    RadixThemesComponent,
-)
+from ..base import RadixThemesComponent
 
 
 class Quote(el.Q, RadixThemesComponent):

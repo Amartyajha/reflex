@@ -5,11 +5,7 @@ from typing import Literal
 
 from reflex.vars import Var
 
-from ..base import (
-    CommonMarginProps,
-    LiteralSize,
-    RadixThemesComponent,
-)
+from ..base import CommonMarginProps, LiteralSize, RadixThemesComponent
 
 LiteralBoolNumber = Literal["0", "1"]
 

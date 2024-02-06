@@ -39,12 +39,7 @@ from .config import (
     RequirementsTxt,
 )
 from .event import Endpoint, EventTriggers, SocketEvent
-from .installer import (
-    Bun,
-    Fnm,
-    Node,
-    PackageJson,
-)
+from .installer import Bun, Fnm, Node, PackageJson
 from .route import (
     ROUTE_NOT_FOUND,
     ROUTER,

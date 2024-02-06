@@ -98,7 +98,7 @@ def get_theme_accordion_root(variant: Var[str], color_scheme: Var[str]) -> BaseV
                 ),
                 "box_shadow": "0 2px 10px var(--black-a4)",
             }
-        )
+        ),
         # defaults to classic
     )
 
@@ -408,7 +408,8 @@ class AccordionRoot(AccordionComponent):
     variant: Var[LiteralAccordionRootVariant] = "classic"  # type: ignore
 
     # The color scheme of the accordion.
-    color_scheme: Var[LiteralAccordionRootColorScheme] = "primary"  # type: ignore
+    # type: ignore
+    color_scheme: Var[LiteralAccordionRootColorScheme] = "primary"
 
     # dynamic themes of the accordion generated at compile time.
     _dynamic_themes: Var[dict]

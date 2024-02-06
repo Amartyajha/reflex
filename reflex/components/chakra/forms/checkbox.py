@@ -3,11 +3,7 @@ from __future__ import annotations
 
 from typing import Any, Union
 
-from reflex.components.chakra import (
-    ChakraComponent,
-    LiteralColorScheme,
-    LiteralTagSize,
-)
+from reflex.components.chakra import ChakraComponent, LiteralColorScheme, LiteralTagSize
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 

@@ -52,9 +52,7 @@ from reflex.config import get_config
 from reflex.event import Event, EventHandler, EventSpec
 from reflex.middleware import HydrateMiddleware, Middleware
 from reflex.model import Model
-from reflex.page import (
-    DECORATED_PAGES,
-)
+from reflex.page import DECORATED_PAGES
 from reflex.route import (
     catchall_in_route,
     catchall_prefix,
@@ -294,7 +292,8 @@ class App(Base):
         """
         for middleware in self.middleware:
             if asyncio.iscoroutinefunction(middleware.preprocess):
-                out = await middleware.preprocess(app=self, state=state, event=event)  # type: ignore
+                # type: ignore
+                out = await middleware.preprocess(app=self, state=state, event=event)
             else:
                 out = middleware.preprocess(app=self, state=state, event=event)  # type: ignore
             if out is not None:
@@ -319,11 +318,17 @@ class App(Base):
         for middleware in self.middleware:
             if asyncio.iscoroutinefunction(middleware.postprocess):
                 out = await middleware.postprocess(
-                    app=self, state=state, event=event, update=update  # type: ignore
+                    app=self,
+                    state=state,
+                    event=event,
+                    update=update,  # type: ignore
                 )
             else:
                 out = middleware.postprocess(
-                    app=self, state=state, event=event, update=update  # type: ignore
+                    app=self,
+                    state=state,
+                    event=event,
+                    update=update,  # type: ignore
                 )
             if out is not None:
                 return out  # type: ignore

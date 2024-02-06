@@ -122,7 +122,6 @@ contextmenu_sub_trigger = ContextMenuSubTrigger.create
 contextmenu_item = ContextMenuItem.create
 contextmenu_separator = ContextMenuSeparator.create
 
-
 # Dialog
 dialog_root = DialogRoot.create
 dialog_trigger = DialogTrigger.create

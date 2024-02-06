@@ -7,16 +7,8 @@ from __future__ import annotations
 from reflex import el
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    RadixThemesComponent,
-)
-from .base import (
-    LiteralTextAlign,
-    LiteralTextSize,
-    LiteralTextTrim,
-    LiteralTextWeight,
-)
+from ..base import LiteralAccentColor, RadixThemesComponent
+from .base import LiteralTextAlign, LiteralTextSize, LiteralTextTrim, LiteralTextWeight
 
 
 class Heading(el.H1, RadixThemesComponent):

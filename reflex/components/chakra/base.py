@@ -22,6 +22,17 @@ class ChakraComponent(Component):
     @staticmethod
     @lru_cache(maxsize=None)
     def _get_app_wrap_components() -> dict[tuple[int, str], Component]:
+        """"Returns a dictionary of app wrap components based on their priority and name."
+        Parameters:
+            - None.
+        Returns:
+            - dict[tuple[int, str], Component]: A dictionary containing app wrap components as values and their priority and name as keys.
+        Processing Logic:
+            - Returns a dictionary.
+            - Priority is an integer.
+            - Name is a string.
+            - Example: {(60, "ChakraProvider"): chakra_provider}"""
+        
         return {
             (60, "ChakraProvider"): chakra_provider,
         }
@@ -104,6 +115,18 @@ class ChakraProvider(ChakraComponent):
         )
 
     def _get_imports(self) -> imports.ImportDict:
+        """"Returns a dictionary of imports for the given library, extendTheme, theme, and css."
+        Parameters:
+            - self (object): The current object.
+        Returns:
+            - imports.ImportDict: A dictionary containing the imports for the given library, extendTheme, theme, and css.
+        Processing Logic:
+            - Get the default imports from the parent class.
+            - Add the extendTheme import to the library imports.
+            - Add the theme import to the /utils/theme.js imports.
+            - Add the css import to the Global library imports.
+            - Return the updated imports dictionary."""
+        
         _imports = super()._get_imports()
         _imports.setdefault(self.__fields__["library"].default, []).append(
             imports.ImportVar(tag="extendTheme", is_default=False),
@@ -117,6 +140,14 @@ class ChakraProvider(ChakraComponent):
         return _imports
 
     def _get_custom_code(self) -> str | None:
+        """Returns:
+            - str | None: Custom code for global styles.
+        Processing Logic:
+            - Returns custom code for global styles.
+            - Uses Chakra components.
+            - Hides blue border.
+            - Removes focus when clicked."""
+        
         return """
 const GlobalStyles = css`
   /* Hide the blue border around Chakra components. */
@@ -130,6 +161,17 @@ const GlobalStyles = css`
     @staticmethod
     @lru_cache(maxsize=None)
     def _get_app_wrap_components() -> dict[tuple[int, str], Component]:
+        """Returns a dictionary of tuples containing the app wrap components.
+        Parameters:
+            - None
+        Returns:
+            - dict[tuple[int, str], Component]: A dictionary of tuples containing the app wrap components.
+        Processing Logic:
+            - Creates a dictionary.
+            - Each key is a tuple of an integer and a string.
+            - Each value is a Component.
+            - The only key-value pair is (50, "ChakraColorModeProvider"): chakra_color_mode_provider."""
+        
         return {
             (50, "ChakraColorModeProvider"): chakra_color_mode_provider,
         }

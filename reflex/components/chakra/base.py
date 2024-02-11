@@ -32,7 +32,6 @@ class ChakraComponent(Component):
             - Priority is an integer.
             - Name is a string.
             - Example: {(60, "ChakraProvider"): chakra_provider}"""
-        
         return {
             (60, "ChakraProvider"): chakra_provider,
         }
@@ -126,7 +125,6 @@ class ChakraProvider(ChakraComponent):
             - Add the theme import to the /utils/theme.js imports.
             - Add the css import to the Global library imports.
             - Return the updated imports dictionary."""
-        
         _imports = super()._get_imports()
         _imports.setdefault(self.__fields__["library"].default, []).append(
             imports.ImportVar(tag="extendTheme", is_default=False),
@@ -147,7 +145,6 @@ class ChakraProvider(ChakraComponent):
             - Uses Chakra components.
             - Hides blue border.
             - Removes focus when clicked."""
-        
         return """
 const GlobalStyles = css`
   /* Hide the blue border around Chakra components. */
@@ -171,7 +168,6 @@ const GlobalStyles = css`
             - Each key is a tuple of an integer and a string.
             - Each value is a Component.
             - The only key-value pair is (50, "ChakraColorModeProvider"): chakra_color_mode_provider."""
-        
         return {
             (50, "ChakraColorModeProvider"): chakra_color_mode_provider,
         }

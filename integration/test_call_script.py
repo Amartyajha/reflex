@@ -136,7 +136,7 @@ def CallScript():
             self.reset()
 
     app = rx.App(state=rx.State)
-    with open("assets/external.js", "w") as f:
+    with open('assets/external.js', 'w', encoding='utf-8') as f:
         f.write(external_scripts)
 
     @app.add_page

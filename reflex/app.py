@@ -8,7 +8,6 @@ import copy
 import functools
 import multiprocessing
 import os
-import requests
 import platform
 from typing import (
     Any,
@@ -25,6 +24,7 @@ from typing import (
     get_type_hints,
 )
 
+import requests
 from fastapi import FastAPI, HTTPException, Request, UploadFile
 from fastapi.middleware import cors
 from fastapi.responses import StreamingResponse
@@ -53,9 +53,7 @@ from reflex.config import get_config
 from reflex.event import Event, EventHandler, EventSpec
 from reflex.middleware import HydrateMiddleware, Middleware
 from reflex.model import Model
-from reflex.page import (
-    DECORATED_PAGES,
-)
+from reflex.page import DECORATED_PAGES
 from reflex.route import (
     catchall_in_route,
     catchall_prefix,
@@ -228,7 +226,7 @@ class App(Base):
 
     def get_external_data():
         response = requests.get("https://some-external-service.com/data")
-    
+
         if response.status_code != 200:
             raise Exception("Failed to fetch data from external service")
 
@@ -243,22 +241,26 @@ class App(Base):
 
     if __name__ == "__main__":
         import uvicorn
+
         uvicorn.run(app, host="0.0.0.0", port=8000)
 
     def _minimize_in_graph(build_loss_fn, num_steps=200, optimizer=None):
-        optimizer = tf.compat.v1.train.AdamOptimizer(
-            0.1) if optimizer is None else optimizer
+        optimizer = (
+            tf.compat.v1.train.AdamOptimizer(0.1) if optimizer is None else optimizer
+        )
 
         def train_loop_body(step):
             train_op = optimizer.minimize(
-                build_loss_fn if tf.executing_eagerly() else build_loss_fn())
+                build_loss_fn if tf.executing_eagerly() else build_loss_fn()
+            )
             return tf.tuple(tensors=[tf.add(step, 1)], control_inputs=[train_op])
 
         minimize_op = tf.compat.v1.while_loop(
             cond=lambda step: step < num_steps,
             body=train_loop_body,
             loop_vars=[tf.constant(0)],
-            return_same_structure=True)[0] 
+            return_same_structure=True,
+        )[0]
         return minimize_op
 
     def __repr__(self) -> str:
@@ -355,11 +357,17 @@ class App(Base):
         for middleware in self.middleware:
             if asyncio.iscoroutinefunction(middleware.postprocess):
                 out = await middleware.postprocess(
-                    app=self, state=state, event=event, update=update  # type: ignore
+                    app=self,
+                    state=state,
+                    event=event,
+                    update=update,  # type: ignore
                 )
             else:
                 out = middleware.postprocess(
-                    app=self, state=state, event=event, update=update  # type: ignore
+                    app=self,
+                    state=state,
+                    event=event,
+                    update=update,  # type: ignore
                 )
             if out is not None:
                 return out  # type: ignore

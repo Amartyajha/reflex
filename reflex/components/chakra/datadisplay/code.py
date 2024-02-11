@@ -378,6 +378,8 @@ class CodeBlock(Component):
     code_tag_props: Var[Dict[str, str]]
 
     def _get_imports(self) -> imports.ImportDict:
+        """"""
+        
         merged_imports = super()._get_imports()
         # Get all themes from a cond literal
         themes = re.findall(r"`(.*?)`", self.theme._var_name)
@@ -419,6 +421,13 @@ class CodeBlock(Component):
             self.language is not None
             and self.language._var_name in LiteralCodeLanguage.__args__  # type: ignore
         ):
+        """Returns:
+            - Optional[str]: The custom code for the given language, if applicable.
+        Processing Logic:
+            - Checks if the language is not None.
+            - Checks if the language variable name is in the LiteralCodeLanguage arguments.
+            - Returns the custom code using the given alias and language variable name."""
+        
             return f"{self.alias}.registerLanguage('{self.language._var_name}', {format.to_camel_case(self.language._var_name)})"
 
     @classmethod
@@ -496,9 +505,31 @@ class CodeBlock(Component):
             return code_block
 
     def _add_style(self, style):
+        """Adds a custom style to the existing style dictionary.
+        Parameters:
+            - style (dict): A dictionary containing custom style attributes.
+        Returns:
+            - None: This function does not return any value.
+        Processing Logic:
+            - Updates existing style dictionary.
+            - Accepts a dictionary as input.
+            - Ignores type checking for self.custom_style.
+            - Only adds custom style attributes."""
+        
         self.custom_style.update(style)  # type: ignore
 
     def _render(self):
+        """Renders the component with updated style and special properties.
+        Parameters:
+            - self (object): The current instance of the component.
+        Returns:
+            - out (object): The updated component with new style and special properties.
+        Processing Logic:
+            - Get the predicate, question mark, and value from the theme's variable name.
+            - Create a new style variable using the formatted variable name.
+            - Remove the "theme" and "code" properties from the component.
+            - If the code property is not None, add a new special property with the code as the value."""
+        
         out = super()._render()
         predicate, qmark, value = self.theme._var_name.partition("?")
         out.add_props(

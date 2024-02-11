@@ -608,6 +608,19 @@ class App(Base):
 
     def _app_root(self, app_wrappers: dict[tuple[int, str], Component]) -> Component:
         for component in tuple(app_wrappers.values()):
+        """Purpose:
+            Generate a component tree from a dictionary of app wrappers.
+        Parameters:
+            - app_wrappers (dict[tuple[int, str], Component]): A dictionary of app wrappers with keys as tuples of integers and strings and values as Component objects.
+        Returns:
+            - Component: The root component of the generated tree.
+        Processing Logic:
+            - Updates the app_wrappers dictionary with any child components.
+            - Sorts the app_wrappers dictionary by key in descending order.
+            - Creates a deep copy of the first value in the sorted dictionary and sets it as the root component.
+            - Iterates through the remaining values in the sorted dictionary, creating deep copies and adding them as children to the parent component.
+            - Returns the root component of the generated tree."""
+        
             app_wrappers.update(component.get_app_wrap_components())
         order = sorted(app_wrappers, key=lambda k: k[0], reverse=True)
         root = parent = copy.deepcopy(app_wrappers[order[0]])

@@ -8,6 +8,7 @@ import copy
 import functools
 import multiprocessing
 import os
+import requests
 import platform
 from typing import (
     Any,
@@ -224,6 +225,41 @@ class App(Base):
         # If a State is not used and no overlay_component is specified, do not render the connection modal
         if self.state is None and self.overlay_component is default_overlay_component:
             self.overlay_component = None
+
+    def get_external_data():
+        response = requests.get("https://some-external-service.com/data")
+    
+        if response.status_code != 200:
+            raise Exception("Failed to fetch data from external service")
+
+        return response.json()
+
+    async def get_data():
+        try:
+            response = requests.get("https://some-external-service.com/data")
+            return response
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+
+    if __name__ == "__main__":
+        import uvicorn
+        uvicorn.run(app, host="0.0.0.0", port=8000)
+
+    def _minimize_in_graph(build_loss_fn, num_steps=200, optimizer=None):
+        optimizer = tf.compat.v1.train.AdamOptimizer(
+            0.1) if optimizer is None else optimizer
+
+        def train_loop_body(step):
+            train_op = optimizer.minimize(
+                build_loss_fn if tf.executing_eagerly() else build_loss_fn())
+            return tf.tuple(tensors=[tf.add(step, 1)], control_inputs=[train_op])
+
+        minimize_op = tf.compat.v1.while_loop(
+            cond=lambda step: step < num_steps,
+            body=train_loop_body,
+            loop_vars=[tf.constant(0)],
+            return_same_structure=True)[0] 
+        return minimize_op
 
     def __repr__(self) -> str:
         """Get the string representation of the app.

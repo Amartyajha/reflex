@@ -23,7 +23,7 @@ def get_lighthouse_scores(directory_path: str) -> dict:
         for filename in os.listdir(directory_path):
             if filename.endswith(".json") and filename != "manifest.json":
                 file_path = os.path.join(directory_path, filename)
-                with open(file_path, 'r', encoding='utf-8') as file:
+                with open(file_path, "r", encoding="utf-8") as file:
                     data = json.load(file)
                     # Extract scores and add them to the dictionary with the filename as key
                     scores[data["finalUrl"].replace("http://localhost:3000/", "")] = {
@@ -65,7 +65,7 @@ def run_pytest_and_get_results(test_path=None) -> dict:
     # Print ls of the current directory
     print(os.listdir())
 
-    with open('benchmark_report.json', 'r', encoding='utf-8') as file:
+    with open("benchmark_report.json", "r", encoding="utf-8") as file:
         pytest_results = json.load(file)
 
     return pytest_results

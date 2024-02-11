@@ -136,7 +136,7 @@ def CallScript():
             self.reset()
 
     app = rx.App(state=rx.State)
-    with open('assets/external.js', 'w', encoding='utf-8') as f:
+    with open("assets/external.js", "w", encoding="utf-8") as f:
         f.write(external_scripts)
 
     @app.add_page
@@ -322,12 +322,14 @@ def test_call_script(
     yield_callback_button.click()
     update_counter_button.click()
     assert call_script.poll_for_value(counter, exp_not_equal="0") == "4"
-    assert call_script.poll_for_value(
-        results, exp_not_equal="[]"
-    ) == '["%s1",null,{"%s3":42,"a":[1,2,3],"s":"js","o":{"a":1,"b":2}},"async %s4"]' % (
-        script,
-        script,
-        script,
+    assert (
+        call_script.poll_for_value(results, exp_not_equal="[]")
+        == '["%s1",null,{"%s3":42,"a":[1,2,3],"s":"js","o":{"a":1,"b":2}},"async %s4"]'
+        % (
+            script,
+            script,
+            script,
+        )
     )
     reset_button.click()
     assert call_script.poll_for_value(counter, exp_not_equal="3") == "0"

@@ -47,11 +47,7 @@ def CallScript():
         def call_script_callback_other_arg(self, result, other_arg):
             self.results.append([other_arg, result])
 
-        def call_scripts_inline_yield(self):
-            yield rx.call_script("inline1()")
-            yield rx.call_script("inline2()")
-            yield rx.call_script("inline3()")
-            yield rx.call_script("inline4()")
+        call_scripts_yield_inline()
 
         def call_script_inline_return(self):
             return rx.call_script("inline2()")
@@ -89,11 +85,7 @@ def CallScript():
                 callback=CallScriptState.set_inline_counter,  # type: ignore
             )
 
-        def call_scripts_external_yield(self):
-            yield rx.call_script("external1()")
-            yield rx.call_script("external2()")
-            yield rx.call_script("external3()")
-            yield rx.call_script("external4()")
+        call_scripts_yield_external()
 
         def call_script_external_return(self):
             return rx.call_script("external2()")
@@ -135,12 +127,28 @@ def CallScript():
             yield rx.call_script("inline_counter = 0; external_counter = 0")
             self.reset()
 
+    def call_scripts_yield_inline():
+        def call_scripts_inline_yield(self):
+            yield rx.call_script("inline1()")
+            yield rx.call_script("inline2()")
+            yield rx.call_script("inline3()")
+            yield rx.call_script("inline4()")
+
+    def call_scripts_yield_external():
+        def call_scripts_external_yield(self):
+            yield rx.call_script("external1()")
+            yield rx.call_script("external2()")
+            yield rx.call_script("external3()")
+            yield rx.call_script("external4()")
+
     app = rx.App(state=rx.State)
     with open("assets/external.js", "w") as f:
         f.write(external_scripts)
 
     @app.add_page
     def index():
+        return create_ui_elements()
+    def create_ui_elements():
         return rx.vstack(
             rx.input(
                 value=CallScriptState.router.session.client_token,
@@ -226,6 +234,7 @@ def CallScript():
             ),
             rx.button("Reset", id="reset", on_click=CallScriptState.reset_),
         )
+
 
 
 @pytest.fixture(scope="session")

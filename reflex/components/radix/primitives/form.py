@@ -65,7 +65,7 @@ class FormRoot(FormComponent):
         return {
             **super().get_event_triggers(),
             EventTriggers.ON_SUBMIT: lambda e0: [FORM_DATA],
-            EventTriggers.ON_CLEAR_SERVER_ERRORS: lambda: [],
+            EventTriggers.ON_CLEAR_SERVER_ERRORS: list,
         }
 
     @classmethod

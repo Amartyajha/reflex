@@ -1,6 +1,5 @@
 """A radio component."""
 
-
 from typing import Any, Dict, List, Union
 
 from reflex.components.chakra import ChakraComponent

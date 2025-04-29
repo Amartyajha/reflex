@@ -7,14 +7,8 @@ from __future__ import annotations
 from reflex import el
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    RadixThemesComponent,
-)
-from .base import (
-    LiteralTextSize,
-    LiteralTextWeight,
-)
+from ..base import LiteralAccentColor, RadixThemesComponent
+from .base import LiteralTextSize, LiteralTextWeight
 
 
 class Blockquote(el.Blockquote, RadixThemesComponent):

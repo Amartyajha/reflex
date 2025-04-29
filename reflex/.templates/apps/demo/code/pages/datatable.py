@@ -208,7 +208,6 @@ data_show = """[
     ["7", "George Weasley", "1 April, 1978", True, "Gryffindor", "Unknown", "Unknown", "Pure-blood"],
 ]"""
 
-
 darkTheme = {
     "accent_color": "#8c96ff",
     "accent_light": "rgba(202, 206, 255, 0.253)",

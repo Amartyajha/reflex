@@ -11,6 +11,7 @@ import re
 import string
 import sys
 from types import CodeType, FunctionType
+from typing import _GenericAlias  # type: ignore
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -24,7 +25,6 @@ from typing import (
     Tuple,
     Type,
     Union,
-    _GenericAlias,  # type: ignore
     cast,
     get_args,
     get_origin,
@@ -451,7 +451,8 @@ class Var:
         if not isinstance(other, Var):
             other = Var.create(other)
         return self._replace(
-            _var_name=f"{{...{self._var_name}, ...{other._var_name}}}"  # type: ignore
+            # type: ignore
+            _var_name=f"{{...{self._var_name}, ...{other._var_name}}}"
         )
 
     def to_string(self, json: bool = True) -> Var:
@@ -727,7 +728,8 @@ class Var:
                 op,
             ):
                 raise TypeError(
-                    f"Unsupported Operand type(s) for {op}: `{left_operand._var_full_name}` of type {left_operand._var_type.__name__} and `{right_operand._var_full_name}` of type {right_operand._var_type.__name__}"  # type: ignore
+                    # type: ignore
+                    f"Unsupported Operand type(s) for {op}: `{left_operand._var_full_name}` of type {left_operand._var_type.__name__} and `{right_operand._var_full_name}` of type {right_operand._var_type.__name__}"
                 )
 
             left_operand_full_name = get_operand_full_name(left_operand)
@@ -737,14 +739,23 @@ class Var:
             if fn is not None:
                 if invoke_fn:
                     # invoke the function on left operand.
-                    operation_name = f"{left_operand_full_name}.{fn}({right_operand_full_name})"  # type: ignore
+                    # type: ignore
+                    operation_name = (
+                        f"{left_operand_full_name}.{fn}({right_operand_full_name})"
+                    )
                 else:
                     # pass the operands as arguments to the function.
-                    operation_name = f"{left_operand_full_name} {op} {right_operand_full_name}"  # type: ignore
+                    # type: ignore
+                    operation_name = (
+                        f"{left_operand_full_name} {op} {right_operand_full_name}"
+                    )
                     operation_name = f"{fn}({operation_name})"
             else:
                 # apply operator to operands (left operand <operator> right_operand)
-                operation_name = f"{left_operand_full_name} {op} {right_operand_full_name}"  # type: ignore
+                # type: ignore
+                operation_name = (
+                    f"{left_operand_full_name} {op} {right_operand_full_name}"
+                )
                 operation_name = format.wrap(operation_name, "(")
         else:
             # apply operator to left operand (<operator> left_operand)
@@ -872,7 +883,8 @@ class Var:
         """
         for python_types, js_type in PYTHON_JS_TYPE_MAP.items():
             if not isinstance(other, Var) and other in python_types:
-                return self.compare("===", Var.create(js_type, _var_is_string=True))  # type: ignore
+                # type: ignore
+                return self.compare("===", Var.create(js_type, _var_is_string=True))
         return self.compare("===", other)
 
     def __ne__(self, other: Union[Var, Type]) -> Var:
@@ -886,7 +898,8 @@ class Var:
         """
         for python_types, js_type in PYTHON_JS_TYPE_MAP.items():
             if not isinstance(other, Var) and other in python_types:
-                return self.compare("!==", Var.create(js_type, _var_is_string=True))  # type: ignore
+                # type: ignore
+                return self.compare("!==", Var.create(js_type, _var_is_string=True))
         return self.compare("!==", other)
 
     def __gt__(self, other: Var) -> Var:

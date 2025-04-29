@@ -43,7 +43,6 @@ forms_1_state = """class FormState(rx.State):
         "Handle the form submit."
         self.form_data = form_data"""
 
-
 forms_2_code = """rx.vstack(
     rx.upload(
         rx.vstack(

@@ -55,8 +55,10 @@ class SliderRoot(SliderComponent):
         """
         return {
             **super().get_event_triggers(),
-            "on_value_change": lambda e0: [e0],  # trigger for all change of a thumb
-            "on_value_commit": lambda e0: [e0],  # trigger when thumb is released
+            # trigger for all change of a thumb
+            "on_value_change": lambda e0: [e0],
+            # trigger when thumb is released
+            "on_value_commit": lambda e0: [e0],
         }
 
     def _apply_theme(self, theme: Component):

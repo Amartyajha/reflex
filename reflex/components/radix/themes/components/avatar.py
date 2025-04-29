@@ -3,12 +3,7 @@ from typing import Literal
 
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    LiteralRadius,
-    LiteralSize,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, LiteralRadius, LiteralSize, RadixThemesComponent
 
 
 class Avatar(RadixThemesComponent):

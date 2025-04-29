@@ -7,12 +7,7 @@ from reflex.components.radix.themes.typography.text import Text
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    LiteralSize,
-    LiteralVariant,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, LiteralSize, LiteralVariant, RadixThemesComponent
 
 LiteralCheckboxSize = Literal["1", "2", "3"]
 

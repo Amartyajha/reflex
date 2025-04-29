@@ -51,7 +51,8 @@ def EventChain():
 
         def on_load_return_chain(self):
             self.event_order.append("on_load_return_chain")
-            return [State.event_arg(1), State.event_arg(2), State.event_arg(3)]  # type: ignore
+            # type: ignore
+            return [State.event_arg(1), State.event_arg(2), State.event_arg(3)]
 
         def on_load_yield_chain(self):
             self.event_order.append("on_load_yield_chain")

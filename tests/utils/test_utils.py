@@ -11,12 +11,9 @@ from reflex import constants
 from reflex.base import Base
 from reflex.event import EventHandler
 from reflex.state import BaseState
-from reflex.utils import (
-    build,
-    prerequisites,
-    types,
-)
+from reflex.utils import build
 from reflex.utils import exec as utils_exec
+from reflex.utils import prerequisites, types
 from reflex.utils.serializers import serialize
 from reflex.vars import Var
 
@@ -33,7 +30,8 @@ def get_above_max_version():
 
     """
     semantic_version_list = constants.Bun.VERSION.split(".")
-    semantic_version_list[-1] = str(int(semantic_version_list[-1]) + 1)  # type: ignore
+    # type: ignore
+    semantic_version_list[-1] = str(int(semantic_version_list[-1]) + 1)
     return ".".join(semantic_version_list)
 
 

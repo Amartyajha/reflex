@@ -82,7 +82,8 @@ class HeaderData(Base):
 class PageData(Base):
     """An object containing page data."""
 
-    host: str = ""  # repeated with self.headers.origin (remove or keep the duplicate?)
+    # repeated with self.headers.origin (remove or keep the duplicate?)
+    host: str = ""
     path: str = ""
     raw_path: str = ""
     full_path: str = ""
@@ -471,7 +472,8 @@ class BaseState(Base, ABC, extra=pydantic.Extra.allow):
             if types._issubclass(base, BaseState) and base is not BaseState
         ]
         assert len(parent_states) < 2, "Only one parent state is allowed."
-        return parent_states[0] if len(parent_states) == 1 else None  # type: ignore
+        # type: ignore
+        return parent_states[0] if len(parent_states) == 1 else None
 
     @classmethod
     def get_substates(cls) -> set[Type[BaseState]]:

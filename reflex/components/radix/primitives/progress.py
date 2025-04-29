@@ -62,7 +62,8 @@ class ProgressIndicator(ProgressComponent):
                 "&[data_state='loading']": {
                     "transition": f"transform 660ms linear",
                 },
-                "transform": f"translateX(-{100 - self.value}%)",  # type: ignore
+                # type: ignore
+                "transform": f"translateX(-{100 - self.value}%)",
             }
         )
 

@@ -8,11 +8,7 @@ from typing import Literal
 
 from reflex.vars import Var
 
-from .base import (
-    LiteralAccentColor,
-    LiteralVariant,
-    RadixThemesComponent,
-)
+from .base import LiteralAccentColor, LiteralVariant, RadixThemesComponent
 
 LiteralTextWeight = Literal["light", "regular", "medium", "bold"]
 LiteralTextAlign = Literal["left", "center", "right"]

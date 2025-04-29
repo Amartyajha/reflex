@@ -72,8 +72,10 @@ def get_base_component_map() -> dict[str, Callable]:
             value, as_="h6", size="xs", margin_y="0.5em"
         ),
         "p": lambda value: Text.create(value, margin_y="1em"),
-        "ul": lambda value: UnorderedList.create(value, margin_y="1em"),  # type: ignore
-        "ol": lambda value: OrderedList.create(value, margin_y="1em"),  # type: ignore
+        # type: ignore
+        "ul": lambda value: UnorderedList.create(value, margin_y="1em"),
+        # type: ignore
+        "ol": lambda value: OrderedList.create(value, margin_y="1em"),
         "li": lambda value: ListItem.create(value, margin_y="0.5em"),
         "a": lambda value: Link.create(value),
         "code": lambda value: Code.create(value),
@@ -112,8 +114,8 @@ class Markdown(Component):
         Returns:
             The markdown component.
         """
-        assert len(children) == 1 and types._isinstance(
-            children[0], Union[str, Var]
+        assert (
+            len(children) == 1 and types._isinstance(children[0], Union[str, Var])
         ), "Markdown component must have exactly one child containing the markdown source."
 
         # Custom styles are deprecated.
@@ -259,9 +261,7 @@ class Markdown(Component):
         }
 
         # Separate out inline code and code blocks.
-        components[
-            "code"
-        ] = f"""{{({{node, inline, className, {_CHILDREN._var_name}, {_PROPS._var_name}}}) => {{
+        components["code"] = f"""{{({{node, inline, className, {_CHILDREN._var_name}, {_PROPS._var_name}}}) => {{
     const match = (className || '').match(/language-(?<lang>.*)/);
     const language = match ? match[1] : '';
     if (language) {{
@@ -279,9 +279,7 @@ class Markdown(Component):
     ) : (
         {self.format_component("codeblock", language=Var.create_safe("language", _var_is_local=False))}
     );
-      }}}}""".replace(
-            "\n", " "
-        )
+      }}}}""".replace("\n", " ")
 
         return components
 

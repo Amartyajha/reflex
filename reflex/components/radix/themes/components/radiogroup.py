@@ -8,11 +8,7 @@ from reflex.components.radix.themes.typography.text import Text
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    LiteralSize,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, LiteralSize, RadixThemesComponent
 
 LiteralFlexDirection = Literal["row", "column", "row-reverse", "column-reverse"]
 
@@ -104,7 +100,7 @@ class HighLevelRadioGroup(RadioGroupRoot):
     def create(
         cls,
         items: Var[List[Optional[Union[str, int, float, list, dict, bool]]]],
-        **props
+        **props,
     ) -> Component:
         """Create a radio group component.
 

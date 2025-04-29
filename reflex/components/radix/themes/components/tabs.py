@@ -4,9 +4,7 @@ from typing import Any, Dict, Literal
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 
-from ..base import (
-    RadixThemesComponent,
-)
+from ..base import RadixThemesComponent
 
 
 class TabsRoot(RadixThemesComponent):

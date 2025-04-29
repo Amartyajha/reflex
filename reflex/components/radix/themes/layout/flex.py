@@ -6,12 +6,7 @@ from typing import Literal
 from reflex import el
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAlign,
-    LiteralJustify,
-    LiteralSize,
-    RadixThemesComponent,
-)
+from ..base import LiteralAlign, LiteralJustify, LiteralSize, RadixThemesComponent
 
 LiteralFlexDirection = Literal["row", "column", "row-reverse", "column-reverse"]
 LiteralFlexDisplay = Literal["none", "inline-flex", "flex"]

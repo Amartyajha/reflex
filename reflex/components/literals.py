@@ -28,5 +28,4 @@ LiteralInputType = Literal[
     "week",
 ]
 
-
 LiteralRowMarker = Literal["none", "number", "checkbox", "both", "clickable-number"]

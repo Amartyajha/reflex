@@ -7,12 +7,8 @@ from __future__ import annotations
 from reflex import el
 from reflex.vars import Var
 
-from ..base import (
-    RadixThemesComponent,
-)
-from .base import (
-    LiteralTextSize,
-)
+from ..base import RadixThemesComponent
+from .base import LiteralTextSize
 
 
 class Kbd(el.Kbd, RadixThemesComponent):

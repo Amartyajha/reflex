@@ -17,7 +17,8 @@ def pil_image() -> Img:
         A random PIL image.
     """
     imarray = np.random.rand(100, 100, 3) * 255
-    return PIL.Image.fromarray(imarray.astype("uint8")).convert("RGBA")  # type: ignore
+    # type: ignore
+    return PIL.Image.fromarray(imarray.astype("uint8")).convert("RGBA")
 
 
 def test_serialize_image(pil_image: Img):

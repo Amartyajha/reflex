@@ -31,14 +31,7 @@ from .charts import (
     Treemap,
 )
 from .general import GraphingTooltip, Label, LabelList, Legend, ResponsiveContainer
-from .polar import (
-    Pie,
-    PolarAngleAxis,
-    PolarGrid,
-    PolarRadiusAxis,
-    Radar,
-    RadialBar,
-)
+from .polar import Pie, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadialBar
 from .recharts import (
     LiteralAnimationEasing,
     LiteralAreaType,
@@ -76,7 +69,6 @@ radial_bar_chart = RadialBarChart.create
 scatter_chart = ScatterChart.create
 funnel_chart = FunnelChart.create
 treemap = Treemap.create
-
 
 area = Area.create
 bar = Bar.create

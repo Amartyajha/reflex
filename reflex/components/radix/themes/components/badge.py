@@ -4,11 +4,7 @@ from typing import Literal
 from reflex import el
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    LiteralRadius,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, LiteralRadius, RadixThemesComponent
 
 
 class Badge(el.Span, RadixThemesComponent):

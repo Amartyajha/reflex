@@ -4,10 +4,7 @@ from typing import Any, Dict, Literal, Union
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, RadixThemesComponent
 
 LiteralDirType = Literal["ltr", "rtl"]
 
@@ -18,7 +15,6 @@ LiteralVariantType = Literal["solid", "soft"]
 LiteralSideType = Literal["top", "right", "bottom", "left"]
 
 LiteralAlignType = Literal["start", "center", "end"]
-
 
 LiteralStickyType = Literal[
     "partial",

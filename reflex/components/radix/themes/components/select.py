@@ -6,11 +6,7 @@ from reflex.components.component import Component
 from reflex.constants import EventTriggers
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAccentColor,
-    LiteralRadius,
-    RadixThemesComponent,
-)
+from ..base import LiteralAccentColor, LiteralRadius, RadixThemesComponent
 
 LiteralButtonSize = Literal[1, 2, 3, 4]
 

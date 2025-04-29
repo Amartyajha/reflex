@@ -6,12 +6,7 @@ from typing import Literal
 from reflex import el
 from reflex.vars import Var
 
-from ..base import (
-    LiteralAlign,
-    LiteralJustify,
-    LiteralSize,
-    RadixThemesComponent,
-)
+from ..base import LiteralAlign, LiteralJustify, LiteralSize, RadixThemesComponent
 
 LiteralGridDisplay = Literal["none", "inline-grid", "grid"]
 LiteralGridFlow = Literal["row", "column", "dense", "row-dense", "column-dense"]

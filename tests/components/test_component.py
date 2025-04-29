@@ -837,7 +837,8 @@ class EventState(rx.State):
             id="direct-style-background_color",
         ),
         pytest.param(
-            rx.fragment(style={"background_color": f"foo{TEST_VAR}bar"}),  # type: ignore
+            # type: ignore
+            rx.fragment(style={"background_color": f"foo{TEST_VAR}bar"}),
             [STYLE_VAR],
             id="fstring-style-background_color",
         ),

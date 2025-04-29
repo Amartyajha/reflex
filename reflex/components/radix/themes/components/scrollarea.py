@@ -3,10 +3,7 @@ from typing import Literal
 
 from reflex.vars import Var
 
-from ..base import (
-    LiteralRadius,
-    RadixThemesComponent,
-)
+from ..base import LiteralRadius, RadixThemesComponent
 
 
 class ScrollArea(RadixThemesComponent):

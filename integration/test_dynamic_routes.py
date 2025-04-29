@@ -49,7 +49,9 @@ def DynamicRoute():
             rx.link("index", href="/", id="link_index"),
             rx.link("page_X", href="/static/x", id="link_page_x"),
             rx.link(
-                "next", href="/page/" + DynamicState.next_page, id="link_page_next"  # type: ignore
+                "next",
+                href="/page/" + DynamicState.next_page,
+                id="link_page_next",  # type: ignore
             ),
             rx.link("missing", href="/missing", id="link_missing"),
             rx.list(
@@ -57,7 +59,8 @@ def DynamicRoute():
             ),
         )
 
-    @rx.page(route="/redirect-page/[page_id]", on_load=DynamicState.on_load_redir)  # type: ignore
+    # type: ignore
+    @rx.page(route="/redirect-page/[page_id]", on_load=DynamicState.on_load_redir)
     def redirect_page():
         return rx.fragment(rx.text("redirecting..."))
 
